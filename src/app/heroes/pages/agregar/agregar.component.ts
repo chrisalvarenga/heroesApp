@@ -33,11 +33,11 @@ export class AgregarComponent implements OnInit {
 
   heroe: Heroe = {
     superhero: '',
-    alter_ego: '',
-    characters: '',
-    first_appearance: '',
     publisher: Publisher.DCComics,
-    alt_img: '',
+    alter_ego: '',
+    first_appearance: '',
+    characters: '',
+    url: ''
   }
 
   constructor( private heroesService: HeroesService,
@@ -75,8 +75,8 @@ export class AgregarComponent implements OnInit {
       // Crear
       this.heroesService.agregarHeroe( this.heroe )
         .subscribe( heroe => {
-          this.router.navigate(['/heroes/editar', heroe.id ]);
           this.mostrarSnakbar('Registro creado');
+          this.router.navigate(['/heroes/listado']);
         })
     }
 

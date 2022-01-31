@@ -11,6 +11,7 @@ import { environment } from '../../../environments/environment';
 export class HeroesService {
 
   private baseUrl: string = environment.baseUrl;
+  //private baseUrl: string = 'http://localhost:3000';
 
   constructor( private http: HttpClient ) { }
 

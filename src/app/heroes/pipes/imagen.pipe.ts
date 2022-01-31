@@ -9,12 +9,13 @@ export class ImagenPipe implements PipeTransform {
 
   transform( heroe: Heroe ): string {
 
-    if( !heroe.id && !heroe.alt_img ) {
-      return 'assets/no-image.png';
-    } else if ( heroe.alt_img ) {
-      return heroe.alt_img;
+    if( !heroe.id && !heroe.url ) {
+      return 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1200px-Imagen_no_disponible.svg.png';
+    } else if ( heroe.url ) {
+      return heroe.url;
     } else {
-      return `assets/heroes/${ heroe.id }.jpg`;
+      //return `assets/heroes/${ heroe.id }.jpg`;
+      return heroe.url!;
     }
 
 

@@ -18,13 +18,19 @@ import { Heroe } from '../../interfaces/heroes.interface';
 export class HeroeComponent implements OnInit {
 
   heroe!: Heroe;
+  id='';
 
   constructor( private activatedRoute: ActivatedRoute,
                private heroesService: HeroesService,
-               private router: Router ) { }
+               private router: Router,
+               private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
 
+    /*this.id = this.route.snapshot.paramMap.get('id') || '';
+    this.heroesService.getHeroePorId(this.id).subscribe(
+      data => this.heroe = data
+    );*/
     this.activatedRoute.params
       .pipe(
         switchMap( ({ id }) => this.heroesService.getHeroePorId(id) )

@@ -1,7 +1,15 @@
 
+export class Auth {
+    email: string;
+    password: string;
 
-export interface Auth {
+    constructor(email: string, password: string) {
+        this.email = email;
+        this.password = password;
+    }
+}
+/*export interface Auth {
     id:      string;
     email:   string;
-    usuario: string;
-}
+    password: string;
+}*/

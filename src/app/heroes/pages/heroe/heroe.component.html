@@ -7,17 +7,15 @@
 
 
 <ng-template #divHeroe>
-    
     <div fxLayout="row"
          fxLayout.xs="column"
          fxLayoutGap="30px">
-
          <div fxFlex="50">
-             <h1>{{ heroe.superhero }} <small>- {{ heroe.alter_ego }} </small> </h1>
-             <mat-divider></mat-divider>
-             <br>
-             <img [src]="heroe | imagen">
-         </div>
+            <h1>{{ heroe.superhero }} <small>- {{ heroe.alter_ego }} </small> </h1>
+            <mat-divider></mat-divider>
+            <br>
+            <img src="{{heroe.url}}">
+        </div>
 
          <div fxFlex="50">
              <h1>{{ heroe.publisher }}</h1>

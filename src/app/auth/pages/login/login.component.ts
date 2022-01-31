@@ -1,35 +1,57 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Auth } from '../../interfaces/auth.interface';
 import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: [
-  ]
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent{
+export class LoginComponent {
 
-  constructor( private router: Router,
-               private authService: AuthService ) { }
+  email = '';
+  password = '';
 
-  login() {
+  constructor(private router: Router,
+    private authService: AuthService) { }
 
-    // Ir al backend
-    // un usuario
-    this.authService.login()
-      .subscribe( resp => {
-        console.log(resp);
-
-        if ( resp.id ) {
-          this.router.navigate(['./heroes']);
-        }
-      })
+  login(): void {
+    const login = new Auth(this.email, this.password);
+    this.authService.login(login).subscribe(
+      response => {
+        this.authService.isLogged = true;
+        console.log(response);
+        //console.log(response.data);
+        console.log(response.data.accesToken);
+        console.log(response.data.user.name);
+        //console.log(response.toStr);
+        localStorage.setItem('token', response.data.accesToken);
+        localStorage.setItem('user', response.data.user.name);
+        localStorage.setItem('logged', 'true');
+        this.router.navigate(['/'])
+        window.location.reload();
+      },
+      err => {
+        /*this.toastr.error(err.error.message, 'Fail', {
+          timeOut: 3000,  positionClass: 'toast-top-center',
+        });*/
+        console.log('error');
+      }
+    )
   }
 
-  ingresarSinLogin() {
-    this.authService.logout();
-    this.router.navigate(['./heroes']);
+  isLoggedUser(): void {
+    let session = localStorage.getItem('token');
+    console.log(session);
+    if (session) {
+      this.authService.isLogged = true;
+    } else {
+      this.authService.isLogged = false;
+    }
   }
+
+
 
 }

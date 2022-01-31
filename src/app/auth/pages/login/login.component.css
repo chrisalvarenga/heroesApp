@@ -1,0 +1,29 @@
+.contenido{
+    margin: auto;
+    border-radius: 10px;
+}
+#title{
+    text-align: center;
+    margin-bottom: 20px;
+}
+#forgot{
+    float: right;
+}
+.form-group input{
+    box-shadow: 2px 2px 2px #e3e0eb;
+    height: 50px;
+    border-radius: 10px;
+}
+#divRegisterLink{
+    text-align: center;
+    padding-top: 25px;
+}
+.btn{
+    border-radius: 30px!important;
+    height: 65px;
+    font-size: 18px;
+    font-weight: 900!important;
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center!important;
+}
