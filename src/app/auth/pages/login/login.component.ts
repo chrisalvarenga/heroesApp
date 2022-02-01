@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth } from '../../interfaces/auth.interface';
 import { AuthService } from '../../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class LoginComponent {
   password = '';
 
   constructor(private router: Router,
+    private toastr: ToastrService,
     private authService: AuthService) { }
 
   login(): void {
@@ -30,13 +32,13 @@ export class LoginComponent {
         localStorage.setItem('token', response.data.accesToken);
         localStorage.setItem('user', response.data.user.name);
         localStorage.setItem('logged', 'true');
-        this.router.navigate(['/'])
-        window.location.reload();
+        this.router.navigate(['/heroes'])
+        //window.location.reload();
       },
       err => {
-        /*this.toastr.error(err.error.message, 'Fail', {
+        this.toastr.error(err, 'Fail', {
           timeOut: 3000,  positionClass: 'toast-top-center',
-        });*/
+        });
         console.log('error');
       }
     )

@@ -1,30 +1,33 @@
-
-<div id="contenido">
-    <div id="title">
-      <h2>HeroesApp</h2>
+<div class="divBg">
+  <div id="title">
+    <h2 class="titulo">HeroesApp</h2>
   </div>
   <div class="contenido card w-50">
-      <div class="card-body">
-          
-          <form (ngSubmit)="login()" class="py-7">
-              <div class="form-group">
-                <label for="formGroupExampleInput">Email</label>
-                <input name="email" [(ngModel)]="email" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your Email">
-              </div>
-              <div class="form-group">
-                <label for="formGroupExampleInput2">Password</label>
-                <input name="password" [(ngModel)]="password" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter your Password">
-              </div>
-              <div class="form-group mb-5">
-                <a id="forgot" [routerLink]="['forgotPassword']" >Forgot Password</a>
-              </div><br>
-              <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
-              <br>
-              <div class="mb-5" id="divRegisterLink">
-                <a [routerLink]="['/register']"><h6>Don’t have an account?
-                  Register Here</h6></a>
-              </div>
-          </form>
+    <div class="card-body">
+      <div class="pb-2">
+        <h3 class="login">Login</h3>
       </div>
+      <form (ngSubmit)="login()" class="py-4">
+        <div class="form-group">
+          <input name="email" [(ngModel)]="email" type="text" class="form-control" id="formGroupExampleInput"
+            placeholder="Enter your Email">
+        </div><br>
+        <div class="form-group">
+          <input name="password" [(ngModel)]="password" type="text" class="form-control" id="formGroupExampleInput2"
+            placeholder="Enter your Password">
+        </div>
+        <div class="form-group mb-5">
+          <a id="forgot" [routerLink]="['forgotPassword']">Forgot Password</a>
+        </div><br>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+        <br>
+        <div class="mb-5" id="divRegisterLink">
+          <a [routerLink]="['/register']">
+            <h4>Don’t have an account?
+              Register Here</h4>
+          </a>
+        </div>
+      </form>
     </div>
   </div>
+</div>

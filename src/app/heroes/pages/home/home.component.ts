@@ -14,6 +14,7 @@ import { Auth } from '../../../auth/interfaces/auth.interface';
 })
 export class HomeComponent implements OnInit {
 
+  name = '';
   get auth() {
     return this.authService.auth;
   }
@@ -22,10 +23,14 @@ export class HomeComponent implements OnInit {
                private authService: AuthService ) { }
 
   ngOnInit(): void {
+    this.name = localStorage.getItem('user')!;
   }
 
   logout() {
     this.router.navigate(['./auth']);
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('logged');
   }
 
 }
