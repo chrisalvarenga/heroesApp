@@ -49,8 +49,11 @@
         <span class="spacer"></span>
 
         <span>{{name}} </span>
-
-        <button mat-button
+        <div *ngIf="!name">
+            <a [routerLink]="['/auth/login']" mat-button>Login</a>
+            <a [routerLink]="['/auth/registro']" mat-button>Register</a>
+        </div>
+        <button *ngIf="name" mat-button
                 (click)="logout()">
             Logout
         </button>
