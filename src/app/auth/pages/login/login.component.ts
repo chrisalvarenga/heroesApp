@@ -33,7 +33,6 @@ export class LoginComponent {
         this.toastr.error(err, 'Fail', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
-        console.log('error');
       }
     )
   }

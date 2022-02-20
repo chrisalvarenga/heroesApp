@@ -26,12 +26,10 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   public login(auth: Auth): Observable<any> {
-    console.log(auth);
     return this.http.post<any>(`${this.authURL}/auth/login/`, auth);
   }
 
   public register(register: Register): Observable<any> {
-    console.log(register);
     return this.http.post<any>(`${this.baseUrl}/user`, register)
   }
 
