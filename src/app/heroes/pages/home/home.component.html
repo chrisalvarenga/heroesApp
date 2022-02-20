@@ -1,41 +1,67 @@
+
+
 <mat-sidenav-container fullscreen>
+    
     <mat-sidenav #sidenav mode="push">
-        <h1>sidenav</h1>
-        <mat-toolbar>
+        
+        <mat-toolbar color="primary">
             <span>Menú</span>
-            <button mat-icon-button (click)="sidenav.toggle()">
+            <span class="spacer"></span>
+            <button mat-icon-button
+                    (click)="sidenav.toggle()">
                 <mat-icon>menu</mat-icon>
             </button>
+            
         </mat-toolbar>
 
         <mat-nav-list>
-            <a (click)="sidenav.toggle()" mat-list-item routerLink="./listado">
+            <a routerLink="./listado"
+               mat-list-item
+               (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>label</mat-icon>
-                <span>Listado de Heroes</span>
+                <span>Listado de Héroes</span>
             </a>
-            <a (click)="sidenav.toggle()" mat-list-item routerLink="./listado">
+
+            <a routerLink="./agregar"
+               mat-list-item
+               (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>add</mat-icon>
                 <span>Añadir Héroe</span>
             </a>
-            <a (click)="sidenav.toggle()" mat-list-item routerLink="./listado">
+
+            <a routerLink="./buscar"
+               mat-list-item
+               (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>search</mat-icon>
-                <span>Buscar</span>
+                <span>Búscar Héroe</span>
             </a>
+            
         </mat-nav-list>
+        
     </mat-sidenav>
 
     <mat-toolbar>
-        <button mat-icon-button (click)="sidenav.toggle()">
+        <button mat-icon-button
+                (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
-        <button mat-button>
+
+        <span class="spacer"></span>
+
+        <span>{{name}} </span>
+        <div *ngIf="!name">
+            <a [routerLink]="['/auth/login']" mat-button>Login</a>
+            <a [routerLink]="['/auth/registro']" mat-button>Register</a>
+        </div>
+        <button *ngIf="name" mat-button
+                (click)="logout()">
             Logout
         </button>
     </mat-toolbar>
 
+
     <div class="container">
         <router-outlet></router-outlet>
     </div>
-
 
 </mat-sidenav-container>
