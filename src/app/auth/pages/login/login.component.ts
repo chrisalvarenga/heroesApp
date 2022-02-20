@@ -24,16 +24,10 @@ export class LoginComponent {
     this.authService.login(login).subscribe(
       response => {
         this.authService.isLogged = true;
-        console.log(response);
-        //console.log(response.data);
-        console.log(response.data.accesToken);
-        console.log(response.data.user.name);
-        //console.log(response.toStr);
         localStorage.setItem('token', response.data.accesToken);
         localStorage.setItem('user', response.data.user.name);
         localStorage.setItem('logged', 'true');
         this.router.navigate(['/heroes'])
-        //window.location.reload();
       },
       err => {
         this.toastr.error(err, 'Fail', {
@@ -46,7 +40,6 @@ export class LoginComponent {
 
   isLoggedUser(): void {
     let session = localStorage.getItem('token');
-    console.log(session);
     if (session) {
       this.authService.isLogged = true;
     } else {
